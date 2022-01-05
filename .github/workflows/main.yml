@@ -14,7 +14,7 @@ jobs:
       - name: Deploy to live server
         uses: burnett01/rsync-deployments@5.1
         with:
-          path: ./*
+          path: $GITHUB_WORKSPACE
           remote_user: ${{ secrets.USER }} 
           remote_host: ${{ secrets.HOST }}
           remote_port: ${{ secrets.PORT }}
