@@ -1,0 +1,24 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  deploy-to-live:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Deploy to live server
+        uses: burnett01/rsync-deployments@5.1
+        with:
+          path: ./*
+          remote_user: ${{ secrets.USER }}
+          remote_host: ${{ secrets.HOST }}
+          remote_port: ${{ secrets.PORT }}
+          remote_key : ${{ secrets.SSH_PRIVATE_KEY }}
+          remote_path: ${{ secrets.PATH }}
+
+          args: '-o ConnectTimeout=5'
