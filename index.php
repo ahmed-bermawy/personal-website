@@ -9,8 +9,7 @@
 <body>
     <h1>Hello, World!</h1>
 
-    <h2 id="paragraph"></h2>
-    <h3 id="paragraph2"></h3>
+    <h2 id="paragraph1"></h2>
 
     <script src="assets/js/dynamicFavicon.js"></script>
     <script src="assets/js/typeWriter.js"></script>
