@@ -1,2 +1,1 @@
 generateDynamicFavicon();
-generateDynamicFavicon();
