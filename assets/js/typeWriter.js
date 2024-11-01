@@ -78,6 +78,9 @@ document.addEventListener('DOMContentLoaded', () => {
   let skip = false;
   const typewriterSound = document.getElementById('typewriterSound');
 
+  // Start the typewriter effect
+  typeWriter(mySentences, 0, 0);
+
   function typeWriter(sentences, sentenceIndex, charIndex) {
     if (skip) {
       displayAllSentences(sentences);
@@ -124,8 +127,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Start the typewriter effect
-  typeWriter(mySentences, 0, 0);
 
   // Add event listener to the skip button
   document.getElementById("skipButton").addEventListener("click", () => {
