@@ -1,4 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
+  typeWriter(mySentences, 0, 0);
+
   const mySentences = [
     {
       sentence: "Surprise!! ",
@@ -74,12 +76,10 @@ document.addEventListener('DOMContentLoaded', () => {
       elementId: "paragraph12",
     },
   ];
-
   let skip = false;
-  const typewriterSound = document.getElementById('typewriterSound');
 
+  const typewriterSound = document.getElementById('typewriterSound');
   // Start the typewriter effect
-  typeWriter(mySentences, 0, 0);
 
   function typeWriter(sentences, sentenceIndex, charIndex) {
     if (skip) {
