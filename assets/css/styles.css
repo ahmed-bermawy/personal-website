@@ -23,7 +23,29 @@ h2, h3 {
     margin: 10px 0;
 }
 
-/* Add this CSS for the fade-out effect */
+button {
+    opacity: 0; /* Hide the button initially */
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: opacity 1s ease-in, box-shadow 0.3s, transform 0.3s; /* Add transition for fade-in effect and shadow */
+    border-radius: 10px; /* Make the button round */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow */
+    background-color: #000000; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* Remove default border */
+}
+
+button.show {
+    opacity: 1; /* Show the button */
+}
+
+button:active {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Change shadow on click */
+    transform: translateY(2px); /* Move button down on click */
+}
+
 .fade-out {
     opacity: 0;
     transition: opacity 1s ease-out;
