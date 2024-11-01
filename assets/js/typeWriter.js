@@ -76,7 +76,16 @@ const mySentences = [
 
 ];
 
+let skip = false;
+const typewriterSound = document.getElementById('typewriterSound');
+
 function typeWriter(sentences, sentenceIndex, charIndex) {
+  if (skip) {
+    displayAllSentences(sentences);
+    typewriterSound.pause();
+    return;
+  }
+
   if (sentenceIndex < sentences.length) {
     const { sentence, delay, initialDelay, elementId } =
       sentences[sentenceIndex];
@@ -90,6 +99,10 @@ function typeWriter(sentences, sentenceIndex, charIndex) {
     }
 
     if (charIndex < sentence.length) {
+      // Play typewriter sound if not already playing
+      if (typewriterSound.paused) {
+        typewriterSound.play();
+      }
       // Display one character at a time
       element.textContent = sentence.substring(0, charIndex + 1);
       charIndex++;
@@ -103,6 +116,26 @@ function typeWriter(sentences, sentenceIndex, charIndex) {
     }
   }
 }
+
+function displayAllSentences(sentences) {
+  sentences.forEach(({ sentence, elementId }) => {
+    let element = document.getElementById(elementId);
+    if (!element) {
+      element = document.createElement("h3");
+      element.id = elementId;
+      document.body.appendChild(element);
+    }
+    element.textContent = sentence;
+  });
+}
+
+// Add event listener to the skip button
+document.getElementById("skipButton").addEventListener("click", () => {
+  skip = true;
+  typewriterSound.pause();
+  document.getElementById('skipButton').classList.add('fade-out');
+  setTimeout(() => displayAllSentences(mySentences), 1000); // Wait for the fade-out effect to complete
+});
 
 // Start the typewriter effect
 typeWriter(mySentences, 0, 0);
