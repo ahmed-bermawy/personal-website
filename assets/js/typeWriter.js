@@ -1,4 +1,6 @@
-const mySentences = [
+document.addEventListener('DOMContentLoaded', () => {
+
+  const mySentences = [
   {
     sentence: "Surprise!! ",
     delay: 50,
@@ -139,3 +141,5 @@ document.getElementById("skipButton").addEventListener("click", () => {
 
 // Start the typewriter effect
 typeWriter(mySentences, 0, 0);
+
+});
