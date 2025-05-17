@@ -1,3 +1,9 @@
+/**
+ * Generates a dynamic favicon by selecting a random favicon from a list.
+ * Creates a link element if one doesn't exist and sets its href to a random favicon URL.
+ * 
+ * @returns {void}
+ */
 function generateDynamicFavicon() {
   let link = document.querySelector("link[rel~='icon']");
   let randomNumber = Math.floor(Math.random() * 10);
@@ -9,6 +15,13 @@ function generateDynamicFavicon() {
   }
 }
 
+/**
+ * Returns a favicon URL based on the provided random number.
+ * The function selects a favicon from a predefined list using the random number as an index.
+ * 
+ * @param {number} randomNumber - The random number used to select a favicon from the list
+ * @returns {string} The URL of the selected favicon with a version parameter
+ */
 function listOfWebsiteFavicon(randomNumber) {
   let list = [
     "https://www.google.com/favicon.ico",
