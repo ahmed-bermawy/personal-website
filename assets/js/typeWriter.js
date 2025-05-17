@@ -92,6 +92,15 @@ document.addEventListener('DOMContentLoaded', () => {
         typeWriter(mySentences, 0, 0);
     }, 4000);
 
+    /**
+     * Implements a typewriter effect by displaying text one character at a time.
+     * Plays a typewriter sound effect while typing and moves to the next sentence when done.
+     * 
+     * @param {Array} sentences - Array of sentence objects containing text and display properties
+     * @param {number} sentenceIndex - The index of the current sentence in the sentences array
+     * @param {number} charIndex - The index of the current character in the current sentence
+     * @returns {void}
+     */
     function typeWriter(sentences, sentenceIndex, charIndex) {
         if (skip) {
             displayAllSentences(sentences);
@@ -126,6 +135,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    /**
+     * Displays all sentences immediately without the typewriter effect.
+     * Used when the user clicks the skip button.
+     * 
+     * @param {Array} sentences - Array of sentence objects containing text and display properties
+     * @returns {void}
+     */
     function displayAllSentences(sentences) {
         sentences.forEach(({sentence, elementId}) => {
             let element = document.getElementById(elementId);
