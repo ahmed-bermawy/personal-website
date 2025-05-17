@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             elementId: "paragraph4",
         },
         {
-            sentence: "So Let my introduce me self 😊",
+            sentence: "So Let my introduce myself 😊",
             delay: 50,
             initialDelay: 0,
             elementId: "paragraph5",
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
             elementId: "paragraph6",
         },
         {
-            sentence: "I have around 12 years of expiernce in web development",
+            sentence: "I have around 12 years of experience in web development",
             delay: 50,
             initialDelay: 0,
             elementId: "paragraph7",
