@@ -10,15 +10,14 @@ jobs:
   deploy-to-live:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Deploy to live server
-        uses: burnett01/rsync-deployments@5.1
+      - uses: actions/checkout@v3
+      - name: rsync deployments
+        uses: burnett01/rsync-deployments@7.0.2
         with:
+          switches: -avzr --delete
           path: ./*
           remote_user: ${{ secrets.USER }}
           remote_host: ${{ secrets.HOST }}
           remote_port: ${{ secrets.PORT }}
           remote_key : ${{ secrets.SSH_PRIVATE_KEY }}
           remote_path: ${{ secrets.PATH }}
-
-          args: '-o ConnectTimeout=5'
