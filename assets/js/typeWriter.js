@@ -79,8 +79,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const typewriterSound = document.getElementById('typewriterSound');
     const skipButton = document.getElementById('skipButton');
 
+    // Input validation for DOM elements
     if (!typewriterSound) {
         console.error('typewriterSound element not found');
+        return;
+    }
+
+    if (!skipButton) {
+        console.error('skipButton element not found');
         return;
     }
 
@@ -104,7 +110,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function typeWriter(sentences, sentenceIndex, charIndex) {
         if (skip) {
             displayAllSentences(sentences);
-            typewriterSound.pause();
+            try {
+                typewriterSound.pause();
+            } catch (error) {
+                console.error('Error pausing typewriter sound:', error);
+                // Continue even if pausing fails
+            }
             return;
         }
 
@@ -122,7 +133,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (charIndex < sentence.length) {
                 // Play typewriter sound if not already playing
                 if (typewriterSound.paused) {
-                    typewriterSound.play();
+                    // Add proper error handling for audio playback
+                    typewriterSound.play()
+                        .catch(error => {
+                            console.error('Error playing typewriter sound:', error);
+                            // Continue with typewriter effect even if sound fails
+                        });
                 }
                 // Display one character at a time
                 element.textContent = sentence.substring(0, charIndex + 1);
@@ -157,7 +173,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add event listener to the skip button
     skipButton.addEventListener("click", () => {
         skip = true;
-        typewriterSound.pause();
+        try {
+            typewriterSound.pause();
+        } catch (error) {
+            console.error('Error pausing typewriter sound:', error);
+            // Continue even if pausing fails
+        }
         skipButton.classList.add('fade-out');
         skipButton.classList.remove('show');
         setTimeout(() => displayAllSentences(mySentences), 1000); // Wait for the fade-out effect to complete
