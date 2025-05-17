@@ -25,5 +25,12 @@ function listOfWebsiteFavicon(randomNumber) {
     "https://emojicopy.com/assets/icons/favicon-32x32.png",
     "https://en.wikipedia.org/static/favicon/wikipedia.ico",
   ];
+
+  // Add error handling for cases when randomNumber exceeds array length
+  if (randomNumber < 0 || randomNumber >= list.length) {
+    console.warn(`Invalid randomNumber: ${randomNumber}. Using default value 0.`);
+    randomNumber = 0; // Use a default value (first favicon in the list)
+  }
+
   return list[randomNumber] + "?v=" + randomNumber;
 }
