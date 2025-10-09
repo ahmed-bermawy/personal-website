@@ -43,3 +43,85 @@ button:active {
     opacity: 0;
     transition: opacity 1s ease-out;
 }
+
+/* Mentorship Card Styles */
+.mentorship-card {
+    position: fixed;
+    top: 10px;
+    left: -400px; /* Initially hidden off-screen */
+    width: 380px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    z-index: 1000;
+    transition: left 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.mentorship-card.show {
+    left: 10px; /* Slide in from left */
+}
+
+.card-header {
+    background: rgba(0, 0, 0, 0.2);
+    padding: 15px 20px;
+    border-radius: 13px 13px 0 0;
+    text-align: center;
+}
+
+.card-header h3 {
+    margin: 0;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-align: center;
+}
+
+
+.card-content {
+    padding: 20px;
+}
+
+.card-content p {
+    margin: 0 0 15px 0;
+    font-size: 0.9em;
+    text-align: left;
+}
+
+.card-content ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+
+.card-content li {
+    margin: 8px 0;
+    font-size: 0.85em;
+    text-align: left;
+}
+
+.cta-button {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.cta-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.mentorship-card.hide {
+    left: -400px;
+}
