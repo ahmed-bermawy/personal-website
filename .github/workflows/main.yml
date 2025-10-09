@@ -7,11 +7,11 @@ on:
     branches: [ main ]
 
 jobs:
-  deploy-to-live:
+  deploy-to-info-domain:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: rsync deployments
+      - name: Deploy to first path
         uses: burnett01/rsync-deployments@7.0.2
         with:
           switches: -avzr --delete
@@ -20,4 +20,19 @@ jobs:
           remote_host: ${{ secrets.HOST }}
           remote_port: ${{ secrets.PORT }}
           remote_key : ${{ secrets.SSH_PRIVATE_KEY }}
-          remote_path: ${{ secrets.PATH }}
+          remote_path: ${{ secrets.PATH_INFO }}
+
+  deploy-to-tech-domian:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Deploy to second path
+        uses: burnett01/rsync-deployments@7.0.2
+        with:
+          switches: -avzr --delete
+          path: ./*
+          remote_user: ${{ secrets.USER }}
+          remote_host: ${{ secrets.HOST }}
+          remote_port: ${{ secrets.PORT }}
+          remote_key : ${{ secrets.SSH_PRIVATE_KEY }}
+          remote_path: ${{ secrets.PATH_TECH }}
