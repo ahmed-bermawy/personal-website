@@ -1,4 +1,4 @@
-name: CI/CD
+name: CI/CD - Personal Website
 
 on:
   push:
@@ -25,14 +25,14 @@ jobs:
   deploy-to-tech-domian:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Deploy to second path
+      - uses: actions/checkout@v4
+      - name: Deploy to vps server
         uses: burnett01/rsync-deployments@7.0.2
         with:
-          switches: -avzr --delete
+          switches: -avzr --delete --exclude=.git --exclude=.github
           path: ./*
-          remote_user: ${{ secrets.USER }}
-          remote_host: ${{ secrets.HOST }}
-          remote_port: ${{ secrets.PORT }}
-          remote_key : ${{ secrets.SSH_PRIVATE_KEY }}
-          remote_path: ${{ secrets.PATH_TECH }}
+          remote_user: ${{ secrets.PROD_USER }}
+          remote_host: ${{ secrets.PROD_HOST }}
+          remote_port: ${{ secrets.PROD_PORT }}
+          remote_key: ${{ secrets.PROD_SSH_KEY }}
+          remote_path: /home/production/personal-website
