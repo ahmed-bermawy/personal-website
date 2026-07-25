@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Deploy to first path
+      - name: Deploy to shared server
         uses: burnett01/rsync-deployments@7.0.2
         with:
           switches: -avzr --delete
@@ -19,7 +19,7 @@ jobs:
           remote_user: ${{ secrets.USER }}
           remote_host: ${{ secrets.HOST }}
           remote_port: ${{ secrets.PORT }}
-          remote_key : ${{ secrets.SSH_PRIVATE_KEY }}
+          remote_key : ${{ secrets.PROD_SSH_KEY }}
           remote_path: ${{ secrets.PATH_INFO }}
 
   deploy-to-tech-domian:
@@ -35,4 +35,4 @@ jobs:
           remote_host: ${{ secrets.PROD_HOST }}
           remote_port: ${{ secrets.PROD_PORT }}
           remote_key: ${{ secrets.PROD_SSH_KEY }}
-          remote_path: /home/production/personal-website
+          remote_path: ${{ secrets.PATH_TECH }}
