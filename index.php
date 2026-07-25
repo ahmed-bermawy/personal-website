@@ -8,6 +8,26 @@
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
+    <!-- Family Tree App -->
+    <div id="familyTreeCard" class="family-tree-card">
+        <div class="card-header tree-header">
+            <h3>🌳 Family Tree</h3>
+        </div>
+        <div class="card-content">
+            <p>💚 <strong>Build & share your family history</strong></p>
+            <ul>
+                <li>👨‍👩‍👧‍👦 Create your family tree visually</li>
+                <li>📸 Add photos & profile pictures</li>
+                <li>🔗 Share with relatives via link</li>
+                <li>🌐 Available in English & العربية</li>
+            </ul>
+            <a href="https://family-tree.bermawy.tech" target="_blank" class="cta-button tree-button">
+                🌳 Try Family Tree
+            </a>
+        </div>
+    </div>
+
+
     <!-- Mentorship Service Card -->
     <div id="mentorshipCard" class="mentorship-card">
         <div class="card-header">
