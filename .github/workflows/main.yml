@@ -10,7 +10,7 @@ jobs:
   deploy-to-info-domain:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Deploy to first path
         uses: burnett01/rsync-deployments@7.0.2
         with:
