@@ -4,17 +4,29 @@ body {
     color: #333;
     text-align: center;
     padding: 20px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 h1 {
-    font-size: 2.5em;
+    font-size: 2.5rem;
     margin-bottom: 20px;
+    word-wrap: break-word;
 }
 
 button {
     opacity: 0; /* Hide the button initially */
-    padding: 10px 20px;
-    font-size: 1em;
+    padding: 12px 24px;
+    font-size: 1rem;
     cursor: pointer;
     margin-bottom: 20px;
     transition: opacity 1s ease-in, box-shadow 0.3s, transform 0.3s; /* Add transition for fade-in effect and shadow */
@@ -26,8 +38,10 @@ button {
 }
 
 h2, h3 {
-    font-size: 1.5em;
-    margin: 10px 0;
+    font-size: 1.5rem;
+    margin: 15px 0;
+    line-height: 1.4;
+    word-wrap: break-word;
 }
 
 button.show {
@@ -124,4 +138,65 @@ button:active {
 
 .mentorship-card.hide {
     left: -400px;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    body {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2, h3 {
+        font-size: 1.25rem;
+    }
+
+    .mentorship-card {
+        width: 300px;
+        left: -320px;
+    }
+
+    .mentorship-card.show {
+        left: 5px;
+    }
+
+    .mentorship-card.hide {
+        left: -320px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    h2, h3 {
+        font-size: 1.1rem;
+        margin: 10px 0;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+    }
+
+    .mentorship-card {
+        width: 260px;
+        left: -280px;
+    }
+
+    .mentorship-card.show {
+        left: 5px;
+    }
+
+    .mentorship-card.hide {
+        left: -280px;
+    }
 }

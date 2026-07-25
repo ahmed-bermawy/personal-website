@@ -139,7 +139,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!element) {
                 element = document.createElement("h3");
                 element.id = elementId;
-                document.body.appendChild(element);
+                const container = document.querySelector('.container');
+                if (container) {
+                    container.appendChild(element);
+                } else {
+                    document.body.appendChild(element);
+                }
             }
 
             if (charIndex < sentence.length) {
@@ -176,7 +181,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!element) {
                 element = document.createElement("h3");
                 element.id = elementId;
-                document.body.appendChild(element);
+                const container = document.querySelector('.container');
+                if (container) {
+                    container.appendChild(element);
+                } else {
+                    document.body.appendChild(element);
+                }
             }
             element.textContent = sentence;
         });

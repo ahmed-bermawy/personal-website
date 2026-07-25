@@ -27,12 +27,14 @@
         </div>
     </div>
 
-    <h1>Hello, World!</h1>
+    <div class="container">
+        <h1>Hello, World!</h1>
 
-    <button id="skipButton">Skip Intro</button>
-    <audio id="typewriterSound" src="assets/sounds/typewriter.mp3"></audio>
+        <button id="skipButton">Skip Intro</button>
+        <audio id="typewriterSound" src="assets/sounds/typewriter.mp3"></audio>
 
-    <h2 id="paragraph1"></h2>
+        <h2 id="paragraph1"></h2>
+    </div>
 
     <script src="assets/js/dynamicFavicon.js"></script>
     <script src="assets/js/typeWriter.js"></script>
