@@ -201,15 +201,6 @@ button:active {
     }
 }
 
-/* Family Tree Card */
-.family-tree-card {
-    background: linear-gradient(135deg, #064e3b, #047857);
-    border-radius: 16px;
-    overflow: hidden;
-    margin-bottom: 24px;
-    box-shadow: 0 4px 20px rgba(5, 150, 105, 0.3);
-    transition: transform 0.3s ease;
-}
 .family-tree-card:hover {
     transform: translateY(-4px);
 }
@@ -223,4 +214,60 @@ button:active {
 .tree-button:hover {
     background: #34d399 !important;
     transform: scale(1.05);
+}
+
+/* Family Tree Card - Fixed on right side, always visible */
+.family-tree-card {
+    position: fixed;
+    top: 10px;
+    right: -400px; /* Initially hidden off-screen to the right */
+    width: 380px;
+    background: linear-gradient(135deg, #064e3b, #059669);
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(5, 150, 105, 0.3);
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    z-index: 1000;
+    transition: right 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+.family-tree-card.show {
+    right: 10px; /* Slide in from right */
+}
+
+.tree-header {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.tree-button {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.tree-button:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .family-tree-card {
+        width: 300px;
+        right: -320px;
+    }
+    .family-tree-card.show {
+        right: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    .family-tree-card {
+        width: 260px;
+        right: -280px;
+    }
+    .family-tree-card.show {
+        right: 5px;
+    }
 }
