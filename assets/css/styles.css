@@ -82,6 +82,9 @@ button:active {
     background: rgba(0, 0, 0, 0.2);
     padding: 15px 20px;
     border-radius: 13px 13px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     text-align: center;
 }
 
@@ -271,3 +274,11 @@ button:active {
         right: 5px;
     }
 }
+
+.close-btn {
+    color: rgba(255,255,255,0.6); font-size: 1.1em;
+    cursor: pointer; padding: 0 4px; user-select: none;
+    transition: color 0.2s;
+    margin-left: auto;
+}
+.close-btn:hover { color: rgba(255,255,255,1); }

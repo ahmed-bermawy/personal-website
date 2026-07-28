@@ -5,13 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ahmed Bermawy</title>
-    <link rel="stylesheet" href="assets/css/styles.css?v=3">
+    <link rel="stylesheet" href="assets/css/styles.css?v=4">
 </head>
 <body>
     <!-- Mentorship Service Card (left side) -->
     <div id="mentorshipCard" class="mentorship-card">
         <div class="card-header">
             <h3>🎯 Mentorship Services</h3>
+            <span class="close-btn" onclick="closeCard("mentorshipCard")">✕</span>
         </div>
         <div class="card-content">
             <p>💡 <strong>Get personalized guidance from Ahmed</strong></p>
@@ -31,6 +32,7 @@
     <div id="familyTreeCard" class="family-tree-card">
         <div class="card-header tree-header">
             <h3>🌳 Family Tree</h3>
+            <span class="close-btn" onclick="closeCard("familyTreeCard")">✕</span>
         </div>
         <div class="card-content">
             <p>💚 <strong>Build & share your family history</strong></p>
@@ -60,5 +62,14 @@
     <script src="assets/js/mentorshipCard.js"></script>
     <script src="assets/js/familyTreeCard.js"></script>
     <script src="assets/js/main.js"></script>
+<script>
+function closeCard(id) {
+    var card = document.getElementById(id);
+    if (card) {
+        card.classList.remove("show");
+        card.classList.add("hide");
+    }
+}
+</script>
 </body>
 </html>
