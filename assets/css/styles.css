@@ -84,9 +84,9 @@ button:active { box-shadow: 0 2px 4px rgba(0,0,0,0.2); transform: translateY(2px
     .mentorship-card { width: 280px; left: -300px; top: auto; bottom: 340px; }
     .mentorship-card.show { left: 5px; }
     .mentorship-card.hide { left: -300px; }
-    .family-tree-card { width: 280px; left: -300px; right: auto; top: auto; bottom: 10px; }
-    .family-tree-card.show { left: 5px; }
-    .family-tree-card.hide { left: -300px; }
+    .family-tree-card { width: 280px; right: -300px; left: auto; top: auto; bottom: 10px; }
+    .family-tree-card.show { right: 5px; }
+    .family-tree-card.hide { right: -300px; }
 }
 
 @media (max-width: 480px) {
@@ -97,9 +97,9 @@ button:active { box-shadow: 0 2px 4px rgba(0,0,0,0.2); transform: translateY(2px
     .mentorship-card { width: 280px; left: -300px; top: auto; bottom: 340px; }
     .mentorship-card.show { left: 5px; }
     .mentorship-card.hide { left: -300px; }
-    .family-tree-card { width: 280px; left: -300px; right: auto; top: auto; bottom: 10px; }
-    .family-tree-card.show { left: 5px; }
-    .family-tree-card.hide { left: -300px; }
+    .family-tree-card { width: 280px; right: -300px; left: auto; top: auto; bottom: 10px; }
+    .family-tree-card.show { right: 5px; }
+    .family-tree-card.hide { right: -300px; }
     .card-header { padding: 10px; }
     .card-content { padding: 10px; }
 }
