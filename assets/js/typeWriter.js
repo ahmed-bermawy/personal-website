@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
             elementId: "paragraph6",
         },
         {
-            sentence: "I'm a Tech Lead | Senior Backend Developer based in Cairo, Egypt",
+            sentence: "I'm a Software Development Lead | Senior Backend Developer based in Cairo, Egypt",
             delay: 50,
             initialDelay: 0,
             elementId: "paragraph7",
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
             elementId: "paragraph9",
         },
         {
-            sentence: "Currently, I'm working as a Tech Lead at Sure (Saudi Software House) directing a cross-functional team of 10+ engineers",
+            sentence: "Since November 2025, I've been working as a Software Development Lead at Damlag, contributing to elcinema.com—the largest Arabic database for movies, series, and actresses",
             delay: 50,
             initialDelay: 0,
             elementId: "paragraph10",
@@ -80,10 +80,16 @@ document.addEventListener('DOMContentLoaded', () => {
             elementId: "paragraph13",
         },
         {
-            sentence: "I'm currently learning Ruby on Rails to expand my expertise in web development frameworks",
+            sentence: "I work extensively with Ruby on Rails, Node.js, and AWS services like ECR, ElastiCache, Elasticsearch, MongoDB, and Redis",
             delay: 50,
             initialDelay: 0,
             elementId: "paragraph14",
+        },
+        {
+            sentence: "I'm also working on the first mobile application for elcinema.com, bringing the platform to iOS and Android 📱",
+            delay: 50,
+            initialDelay: 0,
+            elementId: "paragraph15",
         },
     ];
 
