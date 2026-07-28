@@ -236,6 +236,18 @@ button:active {
 }
 
 .family-tree-card.show {
+
+    .family-tree-card.hide {
+        right: -280px;
+    }
+
+    .family-tree-card.hide {
+        right: -320px;
+    }
+
+.family-tree-card.hide {
+    right: -400px;
+}
     right: 10px; /* Slide in from right */
 }
 
@@ -261,6 +273,14 @@ button:active {
         right: -320px;
     }
     .family-tree-card.show {
+
+    .family-tree-card.hide {
+        right: -280px;
+    }
+
+    .family-tree-card.hide {
+        right: -320px;
+    }
         right: 5px;
     }
 }
@@ -271,6 +291,14 @@ button:active {
         right: -280px;
     }
     .family-tree-card.show {
+
+    .family-tree-card.hide {
+        right: -280px;
+    }
+
+    .family-tree-card.hide {
+        right: -320px;
+    }
         right: 5px;
     }
 }
