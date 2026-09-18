@@ -1,5 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const mySentences = [
+    // The intro follows the page language (see lang/ for the rest of the copy).
+    const LANG = document.documentElement.lang === 'ar' ? 'ar' : 'en';
+
+    const SENTENCES_EN = [
         {
             sentence: "Surprise!! ",
             delay: 50,
@@ -44,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
             elementId: "paragraph7",
         },
         {
-            sentence: "I have 12+ years of experience in backend development, team leadership, and scalable system design",
+            sentence: "I have 13+ years of experience in backend development, team leadership, and scalable system design",
             delay: 50,
             initialDelay: 0,
             elementId: "paragraph8",
@@ -92,6 +95,26 @@ document.addEventListener('DOMContentLoaded', () => {
             elementId: "paragraph15",
         },
     ];
+
+    const SENTENCES_AR = [
+        { sentence: "مفاجأة!! ", delay: 50, initialDelay: 0, elementId: "paragraph1" },
+        { sentence: "كنت فاكر إن ده الموقع الوحيد اللي بنيته 😁", delay: 60, initialDelay: 0, elementId: "paragraph2" },
+        { sentence: "عجبتني فكرة إني بكتب على آلة كاتبة 😄", delay: 60, initialDelay: 0, elementId: "paragraph3" },
+        { sentence: "وفكرت إن دي هتكون طريقة حلوة إني أبني موقعي بالشكل ده 😊", delay: 60, initialDelay: 0, elementId: "paragraph4" },
+        { sentence: "خليني أعرّفك بنفسي 😊", delay: 60, initialDelay: 0, elementId: "paragraph5" },
+        { sentence: "اسمي أحمد البرماوي", delay: 60, initialDelay: 0, elementId: "paragraph6" },
+        { sentence: "قائد تطوير برمجيات ومطوّر Backend، من القاهرة، مصر", delay: 60, initialDelay: 0, elementId: "paragraph7" },
+        { sentence: "عندي خبرة تتجاوز 13 سنة في تطوير الـ Backend وقيادة الفرق وتصميم الأنظمة القابلة للتوسّع", delay: 60, initialDelay: 0, elementId: "paragraph8" },
+        { sentence: "خبير في PHP وLaravel وSymfony وShopware، مع سجل حافل في بناء الخدمات المصغّرة", delay: 60, initialDelay: 0, elementId: "paragraph9" },
+        { sentence: "من نوفمبر 2025 بشتغل قائد تطوير برمجيات في Damlag، ومساهم في elcinema.com—أكبر قاعدة بيانات عربية للأفلام والمسلسلات", delay: 60, initialDelay: 0, elementId: "paragraph10" },
+        { sentence: "نجحت في رفع كفاءة التعاون بنسبة 25% وزيادة جودة الكود بنسبة 30%", delay: 60, initialDelay: 0, elementId: "paragraph11" },
+        { sentence: "خبرتي بتشمل CI/CD والنشر السحابي على AWS وتصميم قواعد البيانات، وشغوف بالكود النظيف والإرشاد المهني", delay: 60, initialDelay: 0, elementId: "paragraph12" },
+        { sentence: "عندي كمان خبرة في أدوات DevOps زي Docker وGitHub Actions وRedis وRabbitMQ، وتقنيات حديثة زي GraphQL وWebSockets", delay: 60, initialDelay: 0, elementId: "paragraph13" },
+        { sentence: "بشتغل بشكل موسّع مع Ruby on Rails وNode.js وخدمات AWS زي ECR وElastiCache وElasticsearch وMongoDB وRedis", delay: 60, initialDelay: 0, elementId: "paragraph14" },
+        { sentence: "وشغال حاليًا على أول تطبيق موبايل لـ elcinema.com، لتوصيل المنصة لـ iOS و Android 📱", delay: 60, initialDelay: 0, elementId: "paragraph15" },
+    ];
+
+    const mySentences = LANG === 'ar' ? SENTENCES_AR : SENTENCES_EN;
 
     let skip = false;
     const typewriterSound = document.getElementById('typewriterSound');
