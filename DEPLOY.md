@@ -26,8 +26,9 @@ A post's slug is its filename without the `blog-` prefix and `.php` suffix:
 
 ## Production — nginx
 
-The live site runs **nginx**. nginx ignores `.htaccess`, so the rewrites live in
-the server block instead:
+The live site runs **nginx**. nginx ignores `.htaccess`, so routing is done in
+the server block — and it delegates every clean URL to `router.php`, the same
+file the repo ships for local development:
 
 ```nginx
 server {
@@ -37,35 +38,47 @@ server {
     root /home/production/personal-website;
     index index.php index.html index.htm;
 
+    # One routing table (router.php) instead of a second copy here that goes
+    # stale whenever a page is added.
     location / {
-        try_files $uri $uri/ /index.php?$query_string;
+        try_files $uri $uri/ /router.php?path=$request_uri;
     }
-
-    # Clean URLs — English default + Arabic mirror
-    location = /about     { rewrite ^ /about.php last; }
-    location = /ar        { rewrite ^ /index.php?lang=ar last; }
-    location = /ar/about  { rewrite ^ /about.php?lang=ar last; }
-
-    # Blog: /blog, /ar/blog and /blog/<slug>
-    location = /blog      { rewrite ^ /blog.php last; }
-    location = /ar/blog   { rewrite ^ /blog.php?lang=ar last; }
-    location ~ ^/ar/blog/([a-z0-9-]+)/?$ { rewrite ^ /blog-$1.php?lang=ar last; }
-    location ~ ^/blog/([a-z0-9-]+)/?$    { rewrite ^ /blog-$1.php last; }
 
     location ~ \.php$ {
         include snippets/fastcgi-php.conf;
         fastcgi_pass unix:/run/php/php8.3-fpm.sock;
     }
 
-    location ~ /\.ht {
-        deny all;
-    }
+    location ~ /\.ht { deny all; }
 }
 ```
 
-Apply with `nginx -t && nginx -s reload`.
+Why `$request_uri` and not `$uri`: `try_files` rewrites `REQUEST_URI` to
+`/router.php` before PHP runs, so the original path is handed over as `?path=`
+instead. Get this wrong and every clean URL silently renders the home page.
 
 **Traefik** terminates TLS in front of it (`bermawy.tech` → `127.0.0.1:8080`).
+
+### Adding a page
+
+Add the route to `router.php` (and `.htaccess` for Apache users). **nginx needs
+no change** — that is the whole point of the hand-off.
+
+### Reloading nginx — check it actually reloaded
+
+```bash
+nginx -t && systemctl reload nginx
+```
+
+`nginx -s reload` can fail with `bind() ... Address already in use` while still
+exiting 0. The old master keeps serving the old config, so an edit appears to
+have no effect. If a change does not show up:
+
+```bash
+systemctl restart nginx
+systemctl is-active nginx
+tail -3 /var/log/nginx/error.log     # look for [emerg] ... bind()
+```
 
 ---
 

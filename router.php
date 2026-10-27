@@ -11,7 +11,19 @@
  * (see DEPLOY.md).
  */
 
-$path = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) ?: '/';
+// nginx resolves clean URLs with `try_files ... /router.php?path=$request_uri`.
+// try_files rewrites REQUEST_URI to /router.php, so the original path has to
+// travel as ?path=; it may still carry a query string, so parse it back down to
+// a path. PHP's built-in server has no such rewrite, so fall back to
+// REQUEST_URI directly.
+$rawPath = isset($_GET['path']) && $_GET['path'] !== ''
+    ? $_GET['path']
+    : ($_SERVER['REQUEST_URI'] ?? '/');
+
+$path = parse_url($rawPath, PHP_URL_PATH) ?: '/';
+
+// ?path= is an implementation detail; don't let it leak into $_GET for pages.
+unset($_GET['path']);
 $root = __DIR__;
 
 // Real files are served untouched, assets, and .php scripts requested by name
