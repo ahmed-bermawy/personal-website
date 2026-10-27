@@ -22,6 +22,7 @@ return [
     'hero_skip'       => 'Skip Intro',
     'home_cta'        => 'More about me',
     'home_cta_hint'   => '13+ years of backend engineering, team leadership & the full story',
+    'home_blog_cta'   => 'Read the blog',
 
     /* ── promo cards ────────────────────────────────── */
     'card_mentor_title' => '🎯 Mentorship Services',
@@ -48,6 +49,8 @@ return [
     'about_meta'      => 'About Ahmed Bermawy — Tech Lead & Senior Backend Developer with 13+ years of experience in PHP, Laravel, Symfony, Shopware, microservices and AWS.',
     'about_sub'       => 'The full story — experience, stack and how to reach me.',
     'nav_home'        => 'Home',
+    'nav_about'       => 'About me',
+    'nav_blog'        => 'Blog',
     'nav_file'        => 'about.md',
 
     /* ── whoami ─────────────────────────────────────── */

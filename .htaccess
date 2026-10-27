@@ -15,11 +15,15 @@
   RewriteRule ^ - [L]
 
   # Arabic mirror
-  RewriteRule ^ar/?$          index.php?lang=ar   [L,QSA]
-  RewriteRule ^ar/about/?$    about.php?lang=ar   [L,QSA]
+  RewriteRule ^ar/?$                      index.php?lang=ar   [L,QSA]
+  RewriteRule ^ar/about/?$                about.php?lang=ar   [L,QSA]
+  RewriteRule ^ar/blog/?$                 blog.php?lang=ar    [L,QSA]
+  RewriteRule ^ar/blog/([a-z0-9-]+)/?$    blog-$1.php?lang=ar [L,QSA]
 
   # English (default, no lang param)
-  RewriteRule ^about/?$       about.php           [L,QSA]
+  RewriteRule ^about/?$                   about.php           [L,QSA]
+  RewriteRule ^blog/?$                    blog.php            [L,QSA]
+  RewriteRule ^blog/([a-z0-9-]+)/?$       blog-$1.php         [L,QSA]
 </IfModule>
 
 DirectoryIndex index.php index.html

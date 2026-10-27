@@ -7,6 +7,7 @@ $lang = (isset($_GET['lang']) && $_GET['lang'] === 'ar') ? 'ar' : 'en';
 $T = require __DIR__ . '/lang/' . $lang . '.php';
 $altLangUrl = $lang === 'ar' ? '/' : '/ar';
 $aboutUrl   = $lang === 'ar' ? '/ar/about' : '/about';
+$blogUrl    = $lang === 'ar' ? '/ar/blog' : '/blog';
 ?>
 <!DOCTYPE html>
 <html lang="<?= $T['code'] ?>" dir="<?= $T['dir'] ?>">
@@ -38,7 +39,7 @@ $aboutUrl   = $lang === 'ar' ? '/ar/about' : '/about';
     })();
     </script>
 
-    <link rel="stylesheet" href="/assets/css/styles.css?v=12">
+    <link rel="stylesheet" href="/assets/css/styles.css?v=14">
 </head>
 <body>
     <!-- Theme + language switches -->
@@ -94,13 +95,19 @@ $aboutUrl   = $lang === 'ar' ? '/ar/about' : '/about';
         <h2 id="paragraph1"></h2>
     </div>
 
-    <!-- ═══════════ GO TO ABOUT ═══════════ -->
+    <!-- ═══════════ GO TO ABOUT / BLOG ═══════════ -->
     <div class="home-cta">
-        <a class="about-link" href="<?= $aboutUrl ?>">
-            <span class="about-link-icon">&#128100;</span>
-            <span><?= $T['home_cta'] ?></span>
-            <span class="about-link-arrow"><?= $T['dir'] === 'rtl' ? '&larr;' : '&rarr;' ?></span>
-        </a>
+        <div class="home-cta-actions">
+            <a class="about-link" href="<?= $aboutUrl ?>">
+                <span class="about-link-icon">&#128100;</span>
+                <span><?= $T['home_cta'] ?></span>
+                <span class="about-link-arrow"><?= $T['dir'] === 'rtl' ? '&larr;' : '&rarr;' ?></span>
+            </a>
+            <a class="about-link ghost" href="<?= $blogUrl ?>">
+                <span class="about-link-icon">&#128221;</span>
+                <span><?= $T['home_blog_cta'] ?></span>
+            </a>
+        </div>
         <p class="home-cta-hint"><?= $T['home_cta_hint'] ?></p>
     </div>
 

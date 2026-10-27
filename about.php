@@ -6,6 +6,7 @@
 $lang = (isset($_GET['lang']) && $_GET['lang'] === 'ar') ? 'ar' : 'en';
 $T = require __DIR__ . '/lang/' . $lang . '.php';
 $homeUrl    = $lang === 'ar' ? '/ar' : '/';
+$blogUrl    = $lang === 'ar' ? '/ar/blog' : '/blog';
 $altLangUrl = $lang === 'ar' ? '/about' : '/ar/about';
 $arrow      = $T['dir'] === 'rtl' ? '&larr;' : '&rarr;';
 ?>
@@ -39,7 +40,7 @@ $arrow      = $T['dir'] === 'rtl' ? '&larr;' : '&rarr;';
     })();
     </script>
 
-    <link rel="stylesheet" href="/assets/css/styles.css?v=12">
+    <link rel="stylesheet" href="/assets/css/styles.css?v=14">
 </head>
 <body class="page-about">
     <!-- Theme + language switches -->
@@ -51,7 +52,10 @@ $arrow      = $T['dir'] === 'rtl' ? '&larr;' : '&rarr;';
 
     <!-- Back to home -->
     <nav class="top-nav">
-        <a href="<?= $homeUrl ?>" class="nav-back"><?= $arrow ?> <?= $T['nav_home'] ?></a>
+        <div class="nav-links">
+            <a href="<?= $homeUrl ?>" class="nav-back"><?= $arrow ?> <?= $T['nav_home'] ?></a>
+            <a href="<?= $blogUrl ?>" class="nav-back">&#128221; <?= $T['nav_blog'] ?></a>
+        </div>
         <span class="nav-file"><?= $T['nav_file'] ?></span>
     </nav>
 
@@ -221,7 +225,8 @@ $arrow      = $T['dir'] === 'rtl' ? '&larr;' : '&rarr;';
     <script>
     document.getElementById('year').textContent = new Date().getFullYear();
     </script>
-    <script src="/assets/js/sections.js"></script>
+    <noscript><style>.section{opacity:1;transform:none}</style></noscript>
+    <script src="/assets/js/sections.js?v=13"></script>
     <script src="/assets/js/prefs.js"></script>
 </body>
 </html>

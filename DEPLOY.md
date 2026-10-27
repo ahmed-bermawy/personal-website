@@ -9,10 +9,18 @@ server. There is one thing to get right: **the clean URLs**.
 |---|---|---|
 | `/` | `index.php` | English |
 | `/about` | `about.php` | English |
+| `/blog` | `blog.php` | English |
+| `/blog/<slug>` | `blog-<slug>.php` | English |
 | `/ar` | `index.php?lang=ar` | Arabic (RTL) |
 | `/ar/about` | `about.php?lang=ar` | Arabic (RTL) |
+| `/ar/blog` | `blog.php?lang=ar` | Arabic (RTL) |
+| `/ar/blog/<slug>` | `blog-<slug>.php?lang=ar` | Arabic (RTL) |
 
-`/about.php` and `/index.php` also work directly — useful while developing.
+`/about.php`, `/index.php` and the `blog-*.php` files also work directly — useful
+while developing, and they keep older links alive.
+
+A post's slug is its filename without the `blog-` prefix and `.php` suffix:
+`blog.php` links to `blog-<slug>.php` as `/blog/<slug>`.
 
 ---
 
@@ -37,6 +45,12 @@ server {
     location = /about     { rewrite ^ /about.php last; }
     location = /ar        { rewrite ^ /index.php?lang=ar last; }
     location = /ar/about  { rewrite ^ /about.php?lang=ar last; }
+
+    # Blog: /blog, /ar/blog and /blog/<slug>
+    location = /blog      { rewrite ^ /blog.php last; }
+    location = /ar/blog   { rewrite ^ /blog.php?lang=ar last; }
+    location ~ ^/ar/blog/([a-z0-9-]+)/?$ { rewrite ^ /blog-$1.php?lang=ar last; }
+    location ~ ^/blog/([a-z0-9-]+)/?$    { rewrite ^ /blog-$1.php last; }
 
     location ~ \.php$ {
         include snippets/fastcgi-php.conf;
@@ -64,13 +78,13 @@ cd personal-website
 php -S localhost:8000 router.php
 ```
 
-Open <http://localhost:8000>. `router.php` maps the four clean URLs to the right
+Open <http://localhost:8000>. `router.php` maps the clean URLs to the right
 script and language, exactly like nginx does. Without it, `php -S` serves
 `index.php` for everything and `/about` silently shows the home page.
 
 ### B) Apache / XAMPP / MAMP
 
-`.htaccess` in the project root carries the same four rules. Apache reads it
+`.htaccess` in the project root carries the same rules. Apache reads it
 automatically when `AllowOverride` is enabled (XAMPP and MAMP enable it by
 default). If `/about` still drops back to the home page, `mod_rewrite` is off or
 `AllowOverride` is set to `None`.
@@ -109,15 +123,18 @@ virtual host (option C) or the built-in server (option A) instead of a subfolder
 |---|---|
 | `index.php` | home page |
 | `about.php` | the detailed CV |
+| `blog.php` | blog index |
+| `blog-<slug>.php` | one file per post (e.g. `blog-cpu-stuck-at-800mhz.php`) |
 | `lang/en.php`, `lang/ar.php` | every string, keyed — both files must define the same keys |
+| `lang/blog.en.php`, `lang/blog.ar.php` | blog strings + post bodies, keyed — must stay in sync |
 | `assets/css/styles.css` | styles, CSS variables for the theme |
 | `assets/js/prefs.js` | theme + language, applied before first paint |
 | `assets/js/typeWriter.js` | the typing effect on the home page |
 | `router.php` | **local only** — clean URLs for `php -S` |
 | `.htaccess` | **local only** — clean URLs for Apache |
 
-Language is chosen by `?lang=ar`; `$_GET['lang']` is the only input both pages
-read for it.
+Language is chosen by the `/ar/...` path or by `?lang=ar`; `$_GET['lang']` is the
+only input the pages read for it.
 
 ---
 
