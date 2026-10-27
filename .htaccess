@@ -1,0 +1,33 @@
+# Clean URLs for local development (Apache / XAMPP / MAMP).
+#
+# PRODUCTION DOES NOT USE THIS FILE. The live site runs nginx, which ignores
+# .htaccess entirely — the same rules live in the nginx server block (see
+# DEPLOY.md). This file exists so that `http://localhost/personal-website/about`
+# behaves like the real site instead of dropping back to the home page.
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Anything that exists on disk (assets, .php scripts, real folders) is served
+  # as-is — never rewritten.
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Arabic mirror
+  RewriteRule ^ar/?$          index.php?lang=ar   [L,QSA]
+  RewriteRule ^ar/about/?$    about.php?lang=ar   [L,QSA]
+
+  # English (default, no lang param)
+  RewriteRule ^about/?$       about.php           [L,QSA]
+</IfModule>
+
+DirectoryIndex index.php index.html
+
+# No directory listings.
+Options -Indexes
+
+# Never serve dotfiles (.env, .git, .htaccess itself).
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
